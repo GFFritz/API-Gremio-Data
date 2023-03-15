@@ -17,3 +17,18 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::group([
+
+    'name' => 'api.',
+    'namespace' => 'ApiControllers',
+
+], function () {
+    Route::group([
+        'prefix' => 'Championships'
+    ], function()
+    {
+        Route::get('index', 'ChampionshipController@index');
+        Route::post('create', 'ChampionshipController@store');
+    });
+});
