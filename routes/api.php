@@ -30,5 +30,7 @@ Route::group([
     {
         Route::get('index', 'ChampionshipController@index');
         Route::post('create', 'ChampionshipController@store');
+        Route::post('edit/{championship}', 'ChampionshipController@update');
+        Route::delete('delete/{championship}', 'ChampionshipController@destroy');
     });
 });

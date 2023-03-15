@@ -27,4 +27,27 @@ class ChampionshipController extends Controller
             'campeonato' => $championship
         ]);
     }
+
+    public function update(Request $request, Championship $championship)
+    {
+        $data = $request->validate([
+            'name' => ['string', 'max:255']
+        ]);
+
+        $championship->update($data);
+
+        return response()->json([
+            'message' => "Campeonato salvo com sucesso",
+            'campeonato' => $championship
+        ]);
+    }
+
+    public function destroy(Championship $championship)
+    {
+        $championship->delete();
+
+        return response()->json([
+            'message' => "Campeonato deletado com sucesso"
+        ]);
+    }
 }
