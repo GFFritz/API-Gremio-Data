@@ -19,7 +19,25 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::group([
-    'middleware' => 'force.json',
+    'middleware' => [
+        'force.json'
+    ],
+    'prefix' => 'auth',
+    'namespace' => 'ApiControllers',
+], function()
+{
+    Route::post('login', 'AuthController@login');
+    Route::post('logout', 'AuthController@logout');
+
+    Route::post('register', 'AuthController@register');
+});
+
+Route::group([
+    'middleware' => [
+        'force.json',
+        'check.sanctum',
+        'auth:sanctum'
+    ],
     'name' => 'api.',
     'namespace' => 'ApiControllers',
 
@@ -34,4 +52,5 @@ Route::group([
         Route::post('edit/{player}', 'PlayersController@update');
         Route::delete('delete/{player}', 'PlayersController@destroy');
     });
+
 });

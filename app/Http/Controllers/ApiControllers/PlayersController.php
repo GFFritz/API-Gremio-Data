@@ -8,6 +8,12 @@ use Illuminate\Http\Request;
 
 class PlayersController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('check.sanctum');
+    }
+
     public function index() {
         $players = Players::all();
 
