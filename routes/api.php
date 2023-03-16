@@ -19,18 +19,19 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 });
 
 Route::group([
-
+    'middleware' => 'force.json',
     'name' => 'api.',
     'namespace' => 'ApiControllers',
 
 ], function () {
     Route::group([
-        'prefix' => 'Championships'
+        'prefix' => 'players'
     ], function()
     {
-        Route::get('index', 'ChampionshipController@index');
-        Route::post('create', 'ChampionshipController@store');
-        Route::post('edit/{championship}', 'ChampionshipController@update');
-        Route::delete('delete/{championship}', 'ChampionshipController@destroy');
+        // Route::resource('create', 'PlayersController')->only('store');
+        Route::get('index', 'PlayersController@index');
+        Route::post('store', 'PlayersController@store');
+        Route::post('edit/{player}', 'PlayersController@update');
+        Route::delete('delete/{player}', 'PlayersController@destroy');
     });
 });

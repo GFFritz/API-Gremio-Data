@@ -28,7 +28,6 @@ Essa API foi desenvolvida com o intuito de estudar mais afundo o Framework Larav
 
 - composer install # para instalar todas as dependências
 - php artisan key:generate # para gerar a key da aplicação
-- php artisan jwt:secret # para gerar a key de validação para o jwt
 - php artisan migrate --seed # para subir o banco de dados e rodar seeds
 - php artisan serve # para subir um servidor e conferir a aplicação rodando
 
