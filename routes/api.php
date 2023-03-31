@@ -53,4 +53,14 @@ Route::group([
         Route::delete('delete/{player}', 'PlayersController@destroy');
     });
 
+    Route::group([
+        'prefix' => 'matches'
+    ], function()
+    {
+        // Route::resource('create', 'PlayersController')->only('store');
+        Route::get('index', 'MatchesController@index');
+        Route::post('store', 'MatchesController@store');
+        Route::post('edit/{match}', 'MatchesController@update');
+    });
+
 });
